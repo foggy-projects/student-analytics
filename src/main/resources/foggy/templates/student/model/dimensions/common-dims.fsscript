@@ -1,0 +1,161 @@
+/**
+ * 学生分析系统 - 公共维度构建器
+ * 可复用的维度定义，供事实表 TM 引用
+ */
+
+export function buildStudentDim(options = {}) {
+    return {
+        name: options.name || 'student',
+        tableName: 'dim_student',
+        foreignKey: options.foreignKey || 'student_id',
+        primaryKey: 'student_id',
+        captionColumn: 'student_name',
+        caption: options.caption || '学生',
+        properties: [
+            { column: 'student_no', caption: '学号' },
+            { column: 'student_name', caption: '姓名' },
+            { column: 'gender', caption: '性别', description: 'M=男, F=女' },
+            { column: 'birth_date', caption: '出生日期', type: 'DAY' },
+            { column: 'enroll_date', caption: '入学日期', type: 'DAY' },
+            { column: 'student_status', caption: '学籍状态', description: 'active=在读, graduated=毕业, transferred=转学' }
+        ]
+    };
+}
+
+export function buildClassDim(options = {}) {
+    return {
+        name: options.name || 'clazz',
+        tableName: 'dim_class',
+        foreignKey: options.foreignKey || 'class_id',
+        primaryKey: 'class_id',
+        captionColumn: 'class_name',
+        caption: options.caption || '班级',
+        properties: [
+            { column: 'class_name', caption: '班级名称' },
+            { column: 'classroom', caption: '教室' },
+            { column: 'student_count', caption: '班级人数', type: 'INTEGER' }
+        ]
+    };
+}
+
+export function buildGradeDim(options = {}) {
+    return {
+        name: options.name || 'grade',
+        tableName: 'dim_grade',
+        foreignKey: options.foreignKey || 'grade_id',
+        primaryKey: 'grade_id',
+        captionColumn: 'grade_name',
+        caption: options.caption || '年级',
+        properties: [
+            { column: 'grade_name', caption: '年级名称' },
+            { column: 'grade_level', caption: '年级序号', type: 'INTEGER', description: '1-6小学, 7-9初中' },
+            { column: 'stage', caption: '学段', description: 'primary=小学, junior=初中' }
+        ]
+    };
+}
+
+export function buildSubjectDim(options = {}) {
+    return {
+        name: options.name || 'subject',
+        tableName: 'dim_subject',
+        foreignKey: options.foreignKey || 'subject_id',
+        primaryKey: 'subject_id',
+        captionColumn: 'subject_name',
+        caption: options.caption || '科目',
+        properties: [
+            { column: 'subject_name', caption: '科目名称' },
+            { column: 'subject_type', caption: '科目类型', description: 'main=主科, minor=副科' },
+            { column: 'full_score', caption: '满分', type: 'INTEGER' },
+            { column: 'pass_score', caption: '及格分', type: 'INTEGER' },
+            { column: 'excellent_score', caption: '优秀分', type: 'INTEGER' }
+        ]
+    };
+}
+
+export function buildExamDim(options = {}) {
+    return {
+        name: options.name || 'exam',
+        tableName: 'dim_exam',
+        foreignKey: options.foreignKey || 'exam_id',
+        primaryKey: 'exam_id',
+        captionColumn: 'exam_name',
+        caption: options.caption || '考试',
+        properties: [
+            { column: 'exam_name', caption: '考试名称' },
+            { column: 'exam_type', caption: '考试类型', description: 'daily=随堂测, unit=单元测, midterm=期中, final=期末' },
+            { column: 'exam_date', caption: '考试日期', type: 'DAY' }
+        ]
+    };
+}
+
+export function buildSemesterDim(options = {}) {
+    return {
+        name: options.name || 'semester',
+        tableName: 'dim_semester',
+        foreignKey: options.foreignKey || 'semester_id',
+        primaryKey: 'semester_id',
+        captionColumn: 'semester_name',
+        caption: options.caption || '学期',
+        properties: [
+            { column: 'semester_name', caption: '学期名称' },
+            { column: 'school_year', caption: '学年' },
+            { column: 'semester_type', caption: '学期类型', description: 'first=上学期, second=下学期' },
+            { column: 'start_date', caption: '开始日期', type: 'DAY' },
+            { column: 'end_date', caption: '结束日期', type: 'DAY' },
+            { column: 'is_current', caption: '是否当前学期', type: 'BOOLEAN' }
+        ]
+    };
+}
+
+export function buildTeacherDim(options = {}) {
+    return {
+        name: options.name || 'teacher',
+        tableName: 'dim_teacher',
+        foreignKey: options.foreignKey || 'teacher_id',
+        primaryKey: 'teacher_id',
+        captionColumn: 'teacher_name',
+        caption: options.caption || '教师',
+        properties: [
+            { column: 'teacher_no', caption: '工号' },
+            { column: 'teacher_name', caption: '姓名' },
+            { column: 'gender', caption: '性别', description: 'M=男, F=女' },
+            { column: 'phone', caption: '联系电话' }
+        ]
+    };
+}
+
+export function buildDateDim(options = {}) {
+    return {
+        name: options.name || 'date',
+        tableName: 'dim_date',
+        foreignKey: options.foreignKey || 'date_id',
+        primaryKey: 'date_id',
+        captionColumn: 'date_id',
+        caption: options.caption || '日期',
+        properties: [
+            { column: 'date_value', caption: '日期', type: 'DAY' },
+            { column: 'year', caption: '年', type: 'INTEGER' },
+            { column: 'month', caption: '月', type: 'INTEGER' },
+            { column: 'week_day', caption: '周几', type: 'INTEGER' },
+            { column: 'is_school_day', caption: '是否教学日', type: 'BOOLEAN' }
+        ]
+    };
+}
+
+export function buildKnowledgePointDim(options = {}) {
+    return {
+        name: options.name || 'knowledgePoint',
+        tableName: 'dim_knowledge_point',
+        foreignKey: options.foreignKey || 'point_id',
+        primaryKey: 'point_id',
+        captionColumn: 'point_name',
+        caption: options.caption || '知识点',
+        properties: [
+            { column: 'point_code', caption: '知识点编码' },
+            { column: 'point_name', caption: '知识点名称' },
+            { column: 'point_level', caption: '层级深度', type: 'INTEGER' },
+            { column: 'difficulty', caption: '难度等级', type: 'INTEGER', description: '1-5' },
+            { column: 'importance', caption: '重要程度', type: 'INTEGER', description: '1-5' }
+        ]
+    };
+}

@@ -1,0 +1,40 @@
+server:
+  port: 8090
+
+spring:
+  application:
+    name: student-analytics
+  datasource:
+    url: jdbc:mysql://localhost:3306/student_analytics?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# Foggy 语义模型配置
+mcp:
+  dataset:
+    access-mode: local
+  semantic:
+    metadata-version: v3
+    query-version: v3
+    model-list:
+      - student/model/DimUserModel
+      - student/model/DimTeacherModel
+      - student/model/DimSemesterModel
+      - student/model/DimDateModel
+      - student/model/DimGradeModel
+      - student/model/DimClassModel
+      - student/model/DimStudentModel
+      - student/model/DimSubjectModel
+      - student/model/DimExamModel
+      - student/model/DimKnowledgePointModel
+      - student/model/KnowledgePointClosureModel
+      - student/model/FactTeacherAssignmentModel
+      - student/model/FactScoreModel
+      - student/model/AggStudentProfileModel
+      - student/model/FactLearningAdviceModel
+      - student/model/FactAttendanceModel
+
+logging:
+  level:
+    com.foggysource: DEBUG
