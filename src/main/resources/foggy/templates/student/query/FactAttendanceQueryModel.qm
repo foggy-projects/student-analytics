@@ -14,6 +14,7 @@ export const queryModel = {
             caption: '日期信息',
             items: [
                 { ref: fo.date },
+                { ref: fo.date$dateValue },
                 { ref: fo.date$year },
                 { ref: fo.date$month },
                 { ref: fo.date$weekDay },

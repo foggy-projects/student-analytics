@@ -1,10 +1,12 @@
 /**
  * 成绩查询模型
- * @description 核心查询模型，支持多维度成绩分析和排名实时计算
+ * @description 核心查询模型，支持多维度成绩分析
  *
- * 排名通过窗口函数实时计算，不存储在事实表中：
- * - rankInClass: 班级内按科目、考试排名
- * - rankInGrade: 年级内按科目、考试排名
+ * 排名通过 DSL calculatedFields 在查询时实时计算，示例：
+ *   calculatedFields: [
+ *     { name: 'rankInClass',  expression: 'RANK() OVER (PARTITION BY class_id, exam_id, subject_id ORDER BY score DESC)' },
+ *     { name: 'rankInGrade',  expression: 'RANK() OVER (PARTITION BY exam_id, subject_id ORDER BY score DESC)' }
+ *   ]
  */
 const fo = loadTableModel('FactScoreModel');
 
@@ -41,19 +43,7 @@ export const queryModel = {
             caption: '成绩指标',
             items: [
                 { ref: fo.score },
-                { ref: fo.scoreLevel },
-                {
-                    name: 'rankInClass',
-                    caption: '班级排名',
-                    formula: 'RANK() OVER (PARTITION BY class_id, exam_id, subject_id ORDER BY score DESC)',
-                    type: 'NUMBER'
-                },
-                {
-                    name: 'rankInGrade',
-                    caption: '年级排名',
-                    formula: 'RANK() OVER (PARTITION BY exam_id, subject_id ORDER BY score DESC)',
-                    type: 'NUMBER'
-                }
+                { ref: fo.scoreLevel }
             ]
         }
     ],
