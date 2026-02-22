@@ -15,7 +15,7 @@ USE student_analytics;
 
 CREATE TABLE dim_user (
     user_id       BIGINT       NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    user_name     VARCHAR(50)  NOT NULL COMMENT '用户名',
+    user_name     VARCHAR(50)  NOT NULL COMMENT '用户名1',
     password_hash VARCHAR(200) NOT NULL COMMENT '密码哈希',
     user_type     VARCHAR(20)  NOT NULL COMMENT '用户类型：admin/teacher',
     teacher_id    BIGINT       NULL     COMMENT '关联教师ID',
