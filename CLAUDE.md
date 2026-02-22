@@ -25,6 +25,17 @@
 - 使用 RX 统一返回（继承 foggy-core 规范）
 - 端口：8090
 
+## 启动与停止
+- **一键启动**: `start.bat`（自动启动 Docker MySQL + Spring Boot）
+- **一键停止**: `stop.bat`（停止 Spring Boot + Docker MySQL）
+- **仅启动 MySQL**: `docker compose -f docker/docker-compose.yml up -d`
+- **仅启动后端**: `mvn spring-boot:run -DskipTests`
+
+## 数据库
+- **Docker MySQL 8.0**，端口 **3307**，密码 `root123`
+- 配置文件：`docker/docker-compose.yml`
+- DDL 自动初始化：`sql/schema.sql` 挂载到 docker-entrypoint-initdb.d
+
 ## 开发约定
 - 构建跳过测试：`-DskipTests`
 - 前端开发：`cd frontend && npm run dev`
