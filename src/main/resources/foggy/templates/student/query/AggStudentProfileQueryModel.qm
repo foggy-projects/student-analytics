@@ -1,0 +1,36 @@
+/**
+ * 学生画像查询模型
+ * @description 学生能力画像聚合数据查询，含 AI 画像摘要
+ */
+const fo = loadTableModel('AggStudentProfileModel');
+
+export const queryModel = {
+    name: 'AggStudentProfileQueryModel',
+    caption: '学生画像',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '学生信息',
+            items: [
+                { ref: fo.student },
+                { ref: fo.student$studentNo },
+                { ref: fo.student$gender },
+                { ref: fo.student$studentStatus }
+            ]
+        },
+        {
+            caption: '画像信息',
+            items: [
+                { ref: fo.overallLevel },
+                { ref: fo.scoreTrend },
+                { ref: fo.aiSummary },
+                { ref: fo.refreshedAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'refreshedAt', order: 'desc' }
+    ]
+};

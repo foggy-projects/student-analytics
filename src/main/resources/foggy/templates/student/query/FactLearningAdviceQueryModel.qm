@@ -1,0 +1,45 @@
+/**
+ * 学习建议查询模型
+ * @description 个性化学习建议查询，支持按科目、知识点、紧急程度筛选
+ */
+const fo = loadTableModel('FactLearningAdviceModel');
+
+export const queryModel = {
+    name: 'FactLearningAdviceQueryModel',
+    caption: '学习建议',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '学生信息',
+            items: [
+                { ref: fo.student },
+                { ref: fo.student$studentNo }
+            ]
+        },
+        {
+            caption: '关联科目与知识点',
+            items: [
+                { ref: fo.subject },
+                { ref: fo.knowledgePoint }
+            ]
+        },
+        {
+            caption: '建议详情',
+            items: [
+                { ref: fo.adviceType },
+                { ref: fo.adviceLevel },
+                { ref: fo.adviceContent },
+                { ref: fo.generateType },
+                { ref: fo.status },
+                { ref: fo.feedback },
+                { ref: fo.createdAt },
+                { ref: fo.expiresAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'createdAt', order: 'desc' }
+    ]
+};
