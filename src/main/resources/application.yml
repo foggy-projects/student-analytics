@@ -34,6 +34,11 @@ mcp:
       - student/model/AggStudentProfileModel
       - student/model/FactLearningAdviceModel
       - student/model/FactAttendanceModel
+      # QM 查询模型
+      - student/query/FactScoreQueryModel
+      - student/query/FactAttendanceQueryModel
+      - student/query/AggStudentProfileQueryModel
+      - student/query/FactLearningAdviceQueryModel
 
 logging:
   level:

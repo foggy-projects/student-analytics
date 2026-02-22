@@ -1,0 +1,50 @@
+/**
+ * 考勤查询模型
+ * @description 学生考勤记录查询，支持按班级、日期维度分析出勤情况
+ */
+const fo = loadTableModel('FactAttendanceModel');
+
+export const queryModel = {
+    name: 'FactAttendanceQueryModel',
+    caption: '考勤查询',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '日期信息',
+            items: [
+                { ref: fo.date },
+                { ref: fo.date$year },
+                { ref: fo.date$month },
+                { ref: fo.date$weekDay },
+                { ref: fo.date$isSchoolDay }
+            ]
+        },
+        {
+            caption: '学生信息',
+            items: [
+                { ref: fo.student },
+                { ref: fo.student$studentNo }
+            ]
+        },
+        {
+            caption: '班级',
+            items: [
+                { ref: fo.clazz }
+            ]
+        },
+        {
+            caption: '考勤详情',
+            items: [
+                { ref: fo.status },
+                { ref: fo.timeSlot },
+                { ref: fo.reason },
+                { ref: fo.createdAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'date$dateValue', order: 'desc' }
+    ]
+};
