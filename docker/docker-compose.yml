@@ -24,5 +24,21 @@ services:
       timeout: 3s
       retries: 10
 
+  mongo:
+    image: mongo:7
+    container_name: student-analytics-mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: student_analytics
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
 volumes:
   mysql-data:
+  mongo-data:
