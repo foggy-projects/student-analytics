@@ -51,6 +51,13 @@
             <version>${foggy-framework.version}</version>
         </dependency>
 
+        <!-- Foggy Dataset Viewer (data-viewer) -->
+        <dependency>
+            <groupId>com.foggysource</groupId>
+            <artifactId>foggy-data-viewer</artifactId>
+            <version>${foggy-framework.version}</version>
+        </dependency>
+
         <!-- MySQL -->
         <dependency>
             <groupId>com.mysql</groupId>

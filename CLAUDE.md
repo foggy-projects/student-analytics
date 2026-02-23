@@ -11,7 +11,7 @@
 ## 技术栈
 - **后端**: Spring Boot 3.4.5 + foggy-dataset-model 8.1.4.beta
 - **前端**: Vue 3 + foggy-data-viewer
-- **数据库**: MySQL
+- **数据库**: MySQL + MongoDB
 - **包名**: com.foggysource.student
 
 ## 数据模型
@@ -26,13 +26,14 @@
 - 端口：8090
 
 ## 启动与停止
-- **一键启动**: `start.bat`（自动启动 Docker MySQL + Spring Boot）
-- **一键停止**: `stop.bat`（停止 Spring Boot + Docker MySQL）
-- **仅启动 MySQL**: `docker compose -f docker/docker-compose.yml up -d`
+- **一键启动**: `start.bat`（自动启动 Docker MySQL + MongoDB + Spring Boot）
+- **一键停止**: `stop.bat`（停止 Spring Boot + Docker 容器）
+- **仅启动 Docker 服务**: `docker compose -f docker/docker-compose.yml up -d`
 - **仅启动后端**: `mvn spring-boot:run -DskipTests`
 
 ## 数据库
-- **Docker MySQL 8.0**，端口 **3307**，密码 `root123`
+- **Docker MySQL 8.0**，端口 **3307**，密码 `root123`，库名 `student_analytics`
+- **Docker MongoDB 7**，端口 **27017**，库名 `student_analytics`（无认证）
 - 配置文件：`docker/docker-compose.yml`
 - DDL 自动初始化：`sql/schema.sql` 挂载到 docker-entrypoint-initdb.d
 

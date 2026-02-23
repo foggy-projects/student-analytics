@@ -9,6 +9,9 @@ spring:
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:root123}
     driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    mongodb:
+      uri: mongodb://localhost:${MONGO_PORT:27017}/student_analytics
   ai:
     openai:
       api-key: ${OPENAI_API_KEY:sk-placeholder}
