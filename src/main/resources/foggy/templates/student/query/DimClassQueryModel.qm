@@ -1,0 +1,43 @@
+/**
+ * 班级查询模型
+ * @description 班级信息查询，关联年级维度
+ */
+const fo = loadTableModel('DimClassModel');
+
+export const queryModel = {
+    name: 'DimClassQueryModel',
+    caption: '班级',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '班级信息',
+            items: [
+                { ref: fo.classId },
+                { ref: fo.className },
+                { ref: fo.classroom },
+                { ref: fo.createdAt }
+            ]
+        },
+        {
+            caption: '年级信息',
+            items: [
+                { ref: fo.grade },
+                { ref: fo.grade$gradeName },
+                { ref: fo.grade$gradeLevel },
+                { ref: fo.grade$stage }
+            ]
+        },
+        {
+            caption: '统计指标',
+            items: [
+                { ref: fo.studentCount }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'grade$gradeLevel', order: 'asc' },
+        { name: 'className', order: 'asc' }
+    ]
+};

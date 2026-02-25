@@ -1,0 +1,48 @@
+/**
+ * 知识点闭包查询模型
+ * @description 知识点层级闭包查询，用于支撑知识点层级的任意层级聚合查询
+ */
+const fo = loadTableModel('KnowledgePointClosureModel');
+
+export const queryModel = {
+    name: 'KnowledgePointClosureQueryModel',
+    caption: '知识点层级关系',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '层级关系',
+            items: [
+                { ref: fo.parentId },
+                { ref: fo.pointId },
+                { ref: fo.distance }
+            ]
+        },
+        {
+            caption: '祖先节点信息',
+            items: [
+                { ref: fo.parent },
+                { ref: fo.parent$pointCode },
+                { ref: fo.parent$pointName },
+                { ref: fo.parent$pointLevel },
+                { ref: fo.parent$subject$subjectName }
+            ]
+        },
+        {
+            caption: '后代节点信息',
+            items: [
+                { ref: fo.point },
+                { ref: fo.point$pointCode },
+                { ref: fo.point$pointName },
+                { ref: fo.point$pointLevel },
+                { ref: fo.point$subject$subjectName }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'parent$subject$subjectName', order: 'asc' },
+        { name: 'distance', order: 'asc' },
+        { name: 'parent$pointName', order: 'asc' }
+    ]
+};

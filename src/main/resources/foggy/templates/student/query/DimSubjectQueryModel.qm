@@ -1,0 +1,33 @@
+/**
+ * 科目查询模型
+ * @description 科目信息查询，支持按科目类型筛选
+ */
+const fo = loadTableModel('DimSubjectModel');
+
+export const queryModel = {
+    name: 'DimSubjectQueryModel',
+    caption: '科目',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '科目信息',
+            items: [
+                { ref: fo.subjectId },
+                { ref: fo.subjectName },
+                { ref: fo.subjectType },
+                { ref: fo.fullScore },
+                { ref: fo.passScore },
+                { ref: fo.excellentScore },
+                { ref: fo.isExamSubject },
+                { ref: fo.sortOrder },
+                { ref: fo.createdAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'sortOrder', order: 'asc' },
+        { name: 'subjectName', order: 'asc' }
+    ]
+};

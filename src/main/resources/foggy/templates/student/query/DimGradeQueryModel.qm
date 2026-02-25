@@ -1,0 +1,28 @@
+/**
+ * 年级查询模型
+ * @description 年级信息查询，支持按年级名称、学段筛选
+ */
+const fo = loadTableModel('DimGradeModel');
+
+export const queryModel = {
+    name: 'DimGradeQueryModel',
+    caption: '年级',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '年级信息',
+            items: [
+                { ref: fo.gradeId },
+                { ref: fo.gradeName },
+                { ref: fo.gradeLevel },
+                { ref: fo.stage },
+                { ref: fo.createdAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'gradeLevel', order: 'asc' }
+    ]
+};

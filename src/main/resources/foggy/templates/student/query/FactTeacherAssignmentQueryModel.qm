@@ -1,0 +1,55 @@
+/**
+ * 教师任课关系查询模型
+ * @description 教师任课关系查询，支持按教师、班级、科目、学期筛选
+ */
+const fo = loadTableModel('FactTeacherAssignmentModel');
+
+export const queryModel = {
+    name: 'FactTeacherAssignmentQueryModel',
+    caption: '教师任课关系',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '任课信息',
+            items: [
+                { ref: fo.assignmentId },
+                { ref: fo.isHeadTeacher },
+                { ref: fo.isCurrent },
+                { ref: fo.createdAt }
+            ]
+        },
+        {
+            caption: '教师信息',
+            items: [
+                { ref: fo.teacher },
+                { ref: fo.teacher$teacherNo },
+                { ref: fo.teacher$teacherName }
+            ]
+        },
+        {
+            caption: '班级信息',
+            items: [
+                { ref: fo.clazz },
+                { ref: fo.clazz$className },
+                { ref: fo.clazz$grade$gradeName }
+            ]
+        },
+        {
+            caption: '科目与学期',
+            items: [
+                { ref: fo.subject },
+                { ref: fo.subject$subjectName },
+                { ref: fo.semester },
+                { ref: fo.semester$semesterName },
+                { ref: fo.semester$schoolYear }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'semester$schoolYear', order: 'desc' },
+        { name: 'isCurrent', order: 'desc' },
+        { name: 'teacher$teacherName', order: 'asc' }
+    ]
+};

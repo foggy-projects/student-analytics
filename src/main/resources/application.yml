@@ -25,10 +25,25 @@ mcp:
     metadata-version: v3
     query-version: v3
     model-list:
+      # 维度表查询模型（支持自然语言检索维度）
+      - DimUserQueryModel
+      - DimTeacherQueryModel
+      - DimSemesterQueryModel
+      - DimDateQueryModel
+      - DimGradeQueryModel
+      - DimClassQueryModel
+      - DimStudentQueryModel
+      - DimSubjectQueryModel
+      - DimExamQueryModel
+      - DimKnowledgePointQueryModel
+      # 事实表/关系表查询模型
+      - FactTeacherAssignmentQueryModel
       - FactScoreQueryModel
-      - FactAttendanceQueryModel
       - AggStudentProfileQueryModel
       - FactLearningAdviceQueryModel
+      - FactAttendanceQueryModel
+      # 闭包表查询模型（层级聚合）
+      - KnowledgePointClosureQueryModel
 
 logging:
   level:
