@@ -1,0 +1,50 @@
+/**
+ * 学生查询模型
+ * @description 学生信息查询，关联班级维度
+ */
+const fo = loadTableModel('DimStudentModel');
+
+export const queryModel = {
+    name: 'DimStudentQueryModel',
+    caption: '学生',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '学生信息',
+            items: [
+                { ref: fo.studentId },
+                { ref: fo.studentNo },
+                { ref: fo.studentName },
+                { ref: fo.gender },
+                { ref: fo.birthDate },
+                { ref: fo.enrollDate },
+                { ref: fo.phone },
+                { ref: fo.studentStatus },
+                { ref: fo.createdAt }
+            ]
+        },
+        {
+            caption: '班级信息',
+            items: [
+                { ref: fo.clazz },
+                { ref: fo.clazz$className },
+                { ref: fo.clazz$classroom }
+            ]
+        },
+        {
+            caption: '年级信息',
+            items: [
+                { ref: fo.clazz$grade },
+                { ref: fo.clazz$grade$gradeName },
+                { ref: fo.clazz$grade$stage }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'clazz$grade$gradeLevel', order: 'asc' },
+        { name: 'clazz$className', order: 'asc' },
+        { name: 'studentNo', order: 'asc' }
+    ]
+};

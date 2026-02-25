@@ -1,0 +1,29 @@
+/**
+ * 教师查询模型
+ * @description 教师信息查询，支持按工号、姓名筛选
+ */
+const fo = loadTableModel('DimTeacherModel');
+
+export const queryModel = {
+    name: 'DimTeacherQueryModel',
+    caption: '教师',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '教师信息',
+            items: [
+                { ref: fo.teacherId },
+                { ref: fo.teacherNo },
+                { ref: fo.teacherName },
+                { ref: fo.gender },
+                { ref: fo.phone },
+                { ref: fo.createdAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'createdAt', order: 'desc' }
+    ]
+};

@@ -1,0 +1,31 @@
+/**
+ * 学期查询模型
+ * @description 学期信息查询，支持按学年、学期类型筛选
+ */
+const fo = loadTableModel('DimSemesterModel');
+
+export const queryModel = {
+    name: 'DimSemesterQueryModel',
+    caption: '学期',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '学期信息',
+            items: [
+                { ref: fo.semesterId },
+                { ref: fo.semesterName },
+                { ref: fo.schoolYear },
+                { ref: fo.semesterType },
+                { ref: fo.startDate },
+                { ref: fo.endDate },
+                { ref: fo.isCurrent },
+                { ref: fo.createdAt }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'startDate', order: 'desc' }
+    ]
+};

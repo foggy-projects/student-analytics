@@ -1,0 +1,56 @@
+/**
+ * 知识点查询模型
+ * @description 知识点信息查询，关联科目、年级维度，支持层级查询
+ */
+const fo = loadTableModel('DimKnowledgePointModel');
+
+export const queryModel = {
+    name: 'DimKnowledgePointQueryModel',
+    caption: '知识点',
+    model: fo,
+
+    columnGroups: [
+        {
+            caption: '知识点信息',
+            items: [
+                { ref: fo.pointId },
+                { ref: fo.pointCode },
+                { ref: fo.pointName },
+                { ref: fo.pointLevel },
+                { ref: fo.difficulty },
+                { ref: fo.importance },
+                { ref: fo.description },
+                { ref: fo.createdAt }
+            ]
+        },
+        {
+            caption: '科目信息',
+            items: [
+                { ref: fo.subject },
+                { ref: fo.subject$subjectName },
+                { ref: fo.subject$subjectType }
+            ]
+        },
+        {
+            caption: '适用年级',
+            items: [
+                { ref: fo.grade },
+                { ref: fo.grade$gradeName },
+                { ref: fo.grade$stage }
+            ]
+        },
+        {
+            caption: '层级关系',
+            items: [
+                { ref: fo.parent },
+                { ref: fo.parent$pointName }
+            ]
+        }
+    ],
+
+    orders: [
+        { name: 'subject$subjectName', order: 'asc' },
+        { name: 'pointLevel', order: 'asc' },
+        { name: 'pointName', order: 'asc' }
+    ]
+};
