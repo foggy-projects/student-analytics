@@ -1,6 +1,6 @@
 # SemanticLayerValidationController 验证端点优化建议
 
-> 来源项目：student-analytics（foggy-dataset-model 8.1.4.beta）
+> 来源项目：student-analytics（foggy-dataset-model 8.1.5.beta）
 > 提交日期：2026-02-23
 > 发现人：Claude AI Agent + 项目开发者
 
@@ -15,8 +15,8 @@
 | 项目 | 值 |
 |---|---|
 | 操作系统 | Windows 11 |
-| foggy-dataset-model 版本 | 8.1.4.beta |
-| foggy-dataset-mcp 版本 | 8.1.4.beta |
+| foggy-dataset-model 版本 | 8.1.5.beta |
+| foggy-dataset-mcp 版本 | 8.1.5.beta |
 | 模型路径 | `D:\foggy-projects\student-analytics\src\main\resources\foggy\templates\student` |
 | TM 文件数 | 16（含 1 个 .fsscript） |
 | QM 文件数 | 4 |
