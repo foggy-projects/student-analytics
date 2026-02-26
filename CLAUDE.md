@@ -9,7 +9,7 @@
 - `docs/design/` - 设计文档
 
 ## 技术栈
-- **后端**: Spring Boot 3.4.5 + foggy-dataset-model 8.1.4.beta
+- **后端**: Spring Boot 3.4.5 + foggy-dataset-model 8.1.5.beta
 - **前端**: Vue 3 + foggy-data-viewer
 - **数据库**: MySQL + MongoDB
 - **包名**: com.foggysource.student
