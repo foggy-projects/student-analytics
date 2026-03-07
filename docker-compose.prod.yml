@@ -82,7 +82,7 @@ services:
       MONGO_DATABASE: student_analytics
 
       # OpenAI 配置（可选）
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-sk-placeholder}
       OPENAI_BASE_URL: ${OPENAI_BASE_URL:-https://api.openai.com}
 
       # JVM 配置
