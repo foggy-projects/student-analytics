@@ -32,7 +32,7 @@ export const queryModel = {
             items: [
                 { ref: fo.clazz },
                 { ref: fo.clazz$className },
-                { ref: fo.clazz$grade$gradeName }
+                { ref: fo.clazz.grade$gradeName }
             ]
         },
         {

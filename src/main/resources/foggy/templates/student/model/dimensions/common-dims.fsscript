@@ -30,6 +30,22 @@ export function buildClassDim(options = {}) {
         primaryKey: 'class_id',
         captionColumn: 'class_name',
         caption: options.caption || '班级',
+        dimensions: [
+            {
+                name: 'grade',
+                alias: 'classGrade',
+                tableName: 'dim_grade',
+                foreignKey: 'grade_id',
+                primaryKey: 'grade_id',
+                captionColumn: 'grade_name',
+                caption: '年级',
+                properties: [
+                    { column: 'grade_name', caption: '年级名称' },
+                    { column: 'grade_level', caption: '年级序号', type: 'INTEGER', description: '1-6小学, 7-9初中' },
+                    { column: 'stage', caption: '学段', description: 'primary=小学, junior=初中' }
+                ]
+            }
+        ],
         properties: [
             { column: 'class_name', caption: '班级名称' },
             { column: 'classroom', caption: '教室' },

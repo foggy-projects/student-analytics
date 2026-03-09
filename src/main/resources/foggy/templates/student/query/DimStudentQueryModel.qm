@@ -35,15 +35,16 @@ export const queryModel = {
         {
             caption: '年级信息',
             items: [
-                { ref: fo.clazz$grade },
-                { ref: fo.clazz$grade$gradeName },
-                { ref: fo.clazz$grade$stage }
+                { ref: fo.clazz.grade },
+                { ref: fo.clazz.grade$gradeName },
+                { ref: fo.clazz.grade$gradeLevel },
+                { ref: fo.clazz.grade$stage }
             ]
         }
     ],
 
     orders: [
-        { name: 'clazz$grade$gradeLevel', order: 'asc' },
+        { ref: fo.clazz.grade$gradeLevel, order: 'asc' },
         { name: 'clazz$className', order: 'asc' },
         { name: 'studentNo', order: 'asc' }
     ]
