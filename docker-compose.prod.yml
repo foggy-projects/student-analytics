@@ -65,7 +65,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.runtime
     container_name: student-analytics-app
     ports:
       - "${APP_PORT:-8090}:8090"
